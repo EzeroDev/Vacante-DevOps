@@ -1,0 +1,340 @@
+Started by user Isaac Cruz
+Obtained JavaScript-Project/Jenkinsfile from git ssh://192.168.1.32:22/DefaultCollection/Devops-Junior/_git/Devops-Junior
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/DevOps-Junior/DevOps-Junior-first-deploy
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository ssh://192.168.1.32:22/DefaultCollection/Devops-Junior/_git/Devops-Junior
+ > git init /var/jenkins_home/workspace/DevOps-Junior/DevOps-Junior-first-deploy # timeout=10
+Fetching upstream changes from ssh://192.168.1.32:22/DefaultCollection/Devops-Junior/_git/Devops-Junior
+ > git --version # timeout=10
+ > git --version # 'git version 2.20.1'
+ > git fetch --tags --force --progress -- ssh://192.168.1.32:22/DefaultCollection/Devops-Junior/_git/Devops-Junior +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url ssh://192.168.1.32:22/DefaultCollection/Devops-Junior/_git/Devops-Junior # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 8b7766f97c99941adb7f8e270c5d16e93f746647 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 8b7766f97c99941adb7f8e270c5d16e93f746647 # timeout=10
+Commit message: "Actualizando los yml"
+ > git rev-list --no-walk 8b7766f97c99941adb7f8e270c5d16e93f746647 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (checkout)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: SonarQube-Server
+[Pipeline] {
+[Pipeline] sh
++ /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarScanner/bin/sonar-scanner
+INFO: Scanner configuration file: /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarScanner/conf/sonar-scanner.properties
+INFO: Project root configuration file: NONE
+INFO: SonarScanner 4.6.2.2472
+INFO: Java 11.0.11 AdoptOpenJDK (64-bit)
+INFO: Linux 4.19.128-microsoft-standard amd64
+INFO: User cache: /var/jenkins_home/.sonar/cache
+INFO: Scanner configuration file: /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarScanner/conf/sonar-scanner.properties
+INFO: Project root configuration file: NONE
+INFO: Analyzing on SonarQube server 9.0.0
+INFO: Default locale: "en_US", source code encoding: "UTF-8" (analysis is platform dependent)
+INFO: Load global settings
+INFO: Load global settings (done) | time=799ms
+INFO: Server id: BF41A1F2-AXrvup7aUA5chInY_JOy
+INFO: User cache: /var/jenkins_home/.sonar/cache
+INFO: Load/download plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=438ms
+INFO: Load/download plugins (done) | time=2874ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=3ms
+INFO: Execute project builders
+INFO: Execute project builders (done) | time=7ms
+INFO: Project key: Devops-Junior
+INFO: Base dir: /var/jenkins_home/workspace/DevOps-Junior/DevOps-Junior-first-deploy
+INFO: Working dir: /var/jenkins_home/workspace/DevOps-Junior/DevOps-Junior-first-deploy/.scannerwork
+INFO: Load project settings for component key: 'Devops-Junior'
+INFO: Load project settings for component key: 'Devops-Junior' (done) | time=108ms
+INFO: Auto-configuring with CI 'Jenkins'
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=512ms
+INFO: Auto-configuring with CI 'Jenkins'
+INFO: Load active rules
+INFO: Load active rules (done) | time=8512ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO: 7 files indexed
+INFO: 0 files ignored because of scm ignore settings
+INFO: Quality profile for js: Sonar way
+INFO: ------------- Run sensors on module Devops-Junior
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=256ms
+INFO: Sensor CSS Rules [cssfamily]
+INFO: No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+INFO: Sensor CSS Rules [cssfamily] (done) | time=3ms
+INFO: Sensor JaCoCo XML Report Importer [jacoco]
+INFO: 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+INFO: No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=12ms
+INFO: Sensor JavaScript analysis [javascript]
+ERROR: Error when running: 'node -v'. Is Node.js available during analysis?
+org.sonarsource.nodejs.NodeCommandException: Error when running: 'node -v'. Is Node.js available during analysis?
+	at org.sonarsource.nodejs.NodeCommand.start(NodeCommand.java:81)
+	at org.sonarsource.nodejs.NodeCommandBuilderImpl.getVersion(NodeCommandBuilderImpl.java:180)
+	at org.sonarsource.nodejs.NodeCommandBuilderImpl.checkNodeCompatibility(NodeCommandBuilderImpl.java:158)
+	at org.sonarsource.nodejs.NodeCommandBuilderImpl.build(NodeCommandBuilderImpl.java:133)
+	at org.sonar.plugins.javascript.eslint.EslintBridgeServerImpl.initNodeCommand(EslintBridgeServerImpl.java:174)
+	at org.sonar.plugins.javascript.eslint.EslintBridgeServerImpl.startServer(EslintBridgeServerImpl.java:119)
+	at org.sonar.plugins.javascript.eslint.EslintBridgeServerImpl.startServerLazily(EslintBridgeServerImpl.java:191)
+	at org.sonar.plugins.javascript.eslint.AbstractEslintSensor.startBridge(AbstractEslintSensor.java:146)
+	at org.sonar.plugins.javascript.eslint.AbstractEslintSensor.execute(AbstractEslintSensor.java:120)
+	at org.sonar.plugins.javascript.eslint.JavaScriptEslintBasedSensor.execute(JavaScriptEslintBasedSensor.java:50)
+	at org.sonar.scanner.sensor.AbstractSensorWrapper.analyse(AbstractSensorWrapper.java:48)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.execute(ModuleSensorsExecutor.java:85)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.lambda$execute$1(ModuleSensorsExecutor.java:59)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.withModuleStrategy(ModuleSensorsExecutor.java:77)
+	at org.sonar.scanner.sensor.ModuleSensorsExecutor.execute(ModuleSensorsExecutor.java:59)
+	at org.sonar.scanner.scan.ModuleScanContainer.doAfterStart(ModuleScanContainer.java:79)
+	at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:137)
+	at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:123)
+	at org.sonar.scanner.scan.ProjectScanContainer.scan(ProjectScanContainer.java:382)
+	at org.sonar.scanner.scan.ProjectScanContainer.scanRecursively(ProjectScanContainer.java:378)
+	at org.sonar.scanner.scan.ProjectScanContainer.doAfterStart(ProjectScanContainer.java:347)
+	at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:137)
+	at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:123)
+	at org.sonar.scanner.bootstrap.GlobalContainer.doAfterStart(GlobalContainer.java:136)
+	at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:137)
+	at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:123)
+	at org.sonar.batch.bootstrapper.Batch.doExecute(Batch.java:72)
+	at org.sonar.batch.bootstrapper.Batch.execute(Batch.java:66)
+	at org.sonarsource.scanner.api.internal.batch.BatchIsolatedLauncher.execute(BatchIsolatedLauncher.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.sonarsource.scanner.api.internal.IsolatedLauncherProxy.invoke(IsolatedLauncherProxy.java:60)
+	at com.sun.proxy.$Proxy0.execute(Unknown Source)
+	at org.sonarsource.scanner.api.EmbeddedScanner.doExecute(EmbeddedScanner.java:189)
+	at org.sonarsource.scanner.api.EmbeddedScanner.execute(EmbeddedScanner.java:138)
+	at org.sonarsource.scanner.cli.Main.execute(Main.java:112)
+	at org.sonarsource.scanner.cli.Main.execute(Main.java:75)
+	at org.sonarsource.scanner.cli.Main.main(Main.java:61)
+Caused by: java.io.IOException: Cannot run program "node": error=2, No such file or directory
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1128)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1071)
+	at org.sonarsource.nodejs.NodeCommand$ProcessWrapperImpl.start(NodeCommand.java:162)
+	at org.sonarsource.nodejs.NodeCommand.start(NodeCommand.java:77)
+	... 39 common frames omitted
+Caused by: java.io.IOException: error=2, No such file or directory
+	at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+	at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:340)
+	at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:271)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1107)
+	... 42 common frames omitted
+
+INFO: Sensor JavaScript analysis [javascript] (done) | time=529942ms
+INFO: Sensor TypeScript analysis [javascript]
+INFO: No input files found for analysis
+INFO: Sensor TypeScript analysis [javascript] (done) | time=4ms
+INFO: Sensor C# Project Type Information [csharp]
+INFO: Sensor C# Project Type Information [csharp] (done) | time=8ms
+INFO: Sensor C# Properties [csharp]
+INFO: Sensor C# Properties [csharp] (done) | time=13ms
+INFO: Sensor JavaXmlSensor [java]
+INFO: Sensor JavaXmlSensor [java] (done) | time=19ms
+INFO: Sensor HTML [web]
+INFO: Sensor HTML [web] (done) | time=65ms
+INFO: Sensor VB.NET Project Type Information [vbnet]
+INFO: Sensor VB.NET Project Type Information [vbnet] (done) | time=6ms
+INFO: Sensor VB.NET Properties [vbnet]
+INFO: Sensor VB.NET Properties [vbnet] (done) | time=5ms
+INFO: ------------- Run sensors on project
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=202ms
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=450ms
+INFO: CPD Executor Calculating CPD for 0 files
+INFO: CPD Executor CPD calculation finished (done) | time=0ms
+INFO: Analysis report generated in 1539ms, dir size=98.6 kB
+INFO: Analysis report compressed in 1314ms, zip size=12.9 kB
+INFO: Analysis report uploaded in 585ms
+INFO: ANALYSIS SUCCESSFUL, you can browse http://192.168.1.32:9000/dashboard?id=Devops-Junior
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://192.168.1.32:9000/api/ce/task?id=AXrzWHHl5YHmO9seKLbD
+INFO: Analysis total time: 10:57.587 s
+INFO: ------------------------------------------------------------------------
+INFO: EXECUTION SUCCESS
+INFO: ------------------------------------------------------------------------
+INFO: Total time: 11:11.062s
+INFO: Final Memory: 7M/27M
+INFO: ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (stop/rm)
+[Pipeline] sh
++ docker ps -q --filter name=Devops-Juniorlatest4000
++ echo 
+Stage "stop/rm" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (build)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ docker build JavaScript-Project/ -t javascript-notes:latest
+
+#1 [internal] load build definition from Dockerfile
+#1       digest: sha256:612a4aecf09dd9862b57aad34a26b5a3cd3175ef043704332a3dbe4174b7c069
+#1         name: "[internal] load build definition from Dockerfile"
+#1      started: 2021-07-29 17:40:07.2390822 +0000 UTC
+#1    completed: 2021-07-29 17:40:07.2424997 +0000 UTC
+#1     duration: 3.4175ms
+#1      started: 2021-07-29 17:40:07.2588954 +0000 UTC
+#1 transferring dockerfile: 36B 0.0s
+#1 transferring dockerfile: 561B 0.1s done
+#1    completed: 2021-07-29 17:40:07.4725137 +0000 UTC
+#1     duration: 213.6183ms
+
+
+#2 [internal] load .dockerignore
+#2       digest: sha256:a1ecdefcc0925637bc4a6aa1b92a4e021c77fc854eb46a947245d51d5dc8a650
+#2         name: "[internal] load .dockerignore"
+#2      started: 2021-07-29 17:40:07.4176537 +0000 UTC
+#2    completed: 2021-07-29 17:40:07.4176902 +0000 UTC
+#2     duration: 36.5µs
+#2      started: 2021-07-29 17:40:07.4184068 +0000 UTC
+#2 transferring context: 2B 0.1s done
+#2    completed: 2021-07-29 17:40:07.5607392 +0000 UTC
+#2     duration: 142.3324ms
+
+
+#3 [internal] load metadata for docker.io/library/php:7.1.17-apache
+#3       digest: sha256:1d8533364af50b75bbbf36be686aaec1b0f57983588f46ed55f9c8f61fb68398
+#3         name: "[internal] load metadata for docker.io/library/php:7.1.17-apache"
+#3      started: 2021-07-29 17:40:07.7034004 +0000 UTC
+#3    completed: 2021-07-29 17:40:09.698682 +0000 UTC
+#3     duration: 1.9952816s
+
+
+#4 [1/5] FROM docker.io/library/php:7.1.17-apache@sha256:edfa2986c1d483b545...
+#4       digest: sha256:cd85cb6f5a23511df062c817de9bd6bc8b77855511f6063f6c8807ff2291606c
+#4         name: "[1/5] FROM docker.io/library/php:7.1.17-apache@sha256:edfa2986c1d483b5456ba0caa0759d6b5dbdb6f9ea5a9f4f6d8d950c0996855d"
+#4      started: 2021-07-29 17:40:09.7174717 +0000 UTC
+#4    completed: 2021-07-29 17:40:09.7211214 +0000 UTC
+#4     duration: 3.6497ms
+
+
+#7 [internal] load build context
+#7       digest: sha256:b9472afbe6da503d3714df5e48e10dcabddb352f1135b03859b247864392ce92
+#7         name: "[internal] load build context"
+#7      started: 2021-07-29 17:40:09.7217578 +0000 UTC
+#7    completed: 2021-07-29 17:40:09.7218067 +0000 UTC
+#7     duration: 48.9µs
+#7      started: 2021-07-29 17:40:09.7268411 +0000 UTC
+#7 transferring context: 49.82kB 0.2s done
+#7    completed: 2021-07-29 17:40:09.973731 +0000 UTC
+#7     duration: 246.8899ms
+
+
+#5 [2/5] RUN a2enmod rewrite
+#5       digest: sha256:f8ac73b58b26fcf1c6e590ec91c376a58579daba3b95a9de9def1fb451b8bdd9
+#5         name: "[2/5] RUN a2enmod rewrite"
+#5      started: 2021-07-29 17:40:09.9980663 +0000 UTC
+#5    completed: 2021-07-29 17:40:09.9980663 +0000 UTC
+#5     duration: 0s
+#5       cached: true
+
+
+#6 [3/5] RUN apt-get update && apt-get install -y         zlib1g-dev       ...
+#6       digest: sha256:440486b2504a5164e057f28ca89c1269490ba0dd6fdc86bfd5ebf6b93f0547c0
+#6         name: "[3/5] RUN apt-get update && apt-get install -y         zlib1g-dev         libicu-dev         libxml2-dev         libpq-dev        && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql         && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip intl xmlrpc soap opcache         && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd         && apt-get install vim -y"
+#6      started: 2021-07-29 17:40:09.9980663 +0000 UTC
+#6    completed: 2021-07-29 17:40:09.9980663 +0000 UTC
+#6     duration: 0s
+#6       cached: true
+
+
+#8 [4/5] COPY  . /var/www/html/
+#8       digest: sha256:4185f4d80f95a472ca81e518a1be0ec4e672f6a0c7cc1eafe9b214fb88212834
+#8         name: "[4/5] COPY  . /var/www/html/"
+#8      started: 2021-07-29 17:40:09.9980663 +0000 UTC
+#8    completed: 2021-07-29 17:40:09.9980663 +0000 UTC
+#8     duration: 0s
+#8       cached: true
+
+
+#9 [5/5] WORKDIR /var/www/html/
+#9       digest: sha256:31f65c2ee66cb55bc4254b594a2b921b3003e946a7b0f0cb10a267c970a939ab
+#9         name: "[5/5] WORKDIR /var/www/html/"
+#9      started: 2021-07-29 17:40:09.9980663 +0000 UTC
+#9       cached: true
+#9    completed: 2021-07-29 17:40:10.0007515 +0000 UTC
+#9     duration: 2.6852ms
+
+
+#10 exporting to image
+#10       digest: sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
+#10         name: "exporting to image"
+#10      started: 2021-07-29 17:40:10.0030305 +0000 UTC
+#10 exporting layers done
+#10 writing image sha256:b5741bb99debe1f390cc95275bdde0121118449d38e41ffa7add0b9aa484646f
+#10    completed: 2021-07-29 17:40:10.24014 +0000 UTC
+#10     duration: 237.1095ms
+#10 writing image sha256:b5741bb99debe1f390cc95275bdde0121118449d38e41ffa7add0b9aa484646f 0.0s done
+#10 naming to docker.io/library/javascript-notes:latest done
+
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (run)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ docker run -dp 4000:80 --name Devops-Juniorlatest4000 javascript-notes:latest
+5a3e6ad9d442ae0be857e731f137bf27c82738532c9fa297e30c33350521fa6a
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] deleteDir
+[Pipeline] sh
++ echo fase always
+fase always
+[Pipeline] sh
++ echo fase success
+fase success
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
